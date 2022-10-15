@@ -2,20 +2,18 @@
 
 class graficoController extends controller {
 
-    public function associado_tipo() {
+    public function aluno_objetivo() {
         if ($this->checkUser()) {
             $crud = new crud_db();
-            $resultado = $crud->read("SELECT tipo as label, COUNT(*) as data FROM associado GROUP BY label");
+            $resultado = $crud->read("SELECT objetivo as label, COUNT(*) as data FROM aluno GROUP BY objetivo");
             echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
         }
     }
 
-    public function asssociado_status() {
+    public function aluno_genero() {
         if ($this->checkUser()) {
             $crud = new crud_db();
-            $resultado = array();
-            $resultado[] = $crud->read_specific("SELECT 'Ativos' as label, COUNT(*) as data FROM associado WHERE status=1");
-            $resultado[] = $crud->read_specific("SELECT 'Inativos' as label, COUNT(*) as data FROM associado WHERE status=0");
+            $resultado = $crud->read("SELECT genero as label, COUNT(*) as data FROM aluno GROUP BY genero");
             echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
         }
     }

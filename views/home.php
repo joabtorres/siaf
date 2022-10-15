@@ -7,75 +7,17 @@
             </ol>
         </div>
     </div>
-    <!--FIM pagina-header-->
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <div class="alert alert-success alert-dismissible fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                Olá <strong><?php echo trim($_SESSION['usuario_sessao']['nome']); ?></strong>, bem-vindo ao <?php echo NAME_PROJECT; ?>.
-            </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="panel panel-black">
-                <div class="panel-heading">
-                    <i class="fa fa-calculator fa-3x pull-left"></i>                               
-                    <div class="font-bold">Associados</div>
-                    <div>Total de Registros</div>
-                </div>
-                <div class="panel-body">
-                    <div class="text-right"><?php echo!empty($totalAssociados) ? $totalAssociados['qtd'] : '0' ?></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="panel panel-black">
-                <div class="panel-heading">
-                    <i class="fa fa-calculator fa-3x pull-left"></i>                               
-                    <div class="font-bold">Entrada</div>
-                    <div>Valor Total</div>
-                </div>
-                <div class="panel-body">
-                    <div class="text-right"><?php echo!empty($totalEntradas) ? $this->formatDinheiroView($totalEntradas['valor']) : '0' ?></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="panel panel-black">
-                <div class="panel-heading">
-                    <i class="fa fa-calculator fa-3x pull-left"></i>                               
-                    <div class="font-bold">Despesa</div>
-                    <div>Valor Total</div>
-                </div>
-                <div class="panel-body">
-                    <div class="text-right"><?php echo!empty($totalDespesas) ? $this->formatDinheiroView($totalDespesas['valor']) : '0' ?></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="panel panel-black">
-                <div class="panel-heading">
-                    <i class="fa fa-calculator fa-3x pull-left"></i>                               
-                    <div class="font-bold">Investimento</div>
-                    <div>Valor Total</div>
-                </div>
-                <div class="panel-body">
-                    <div class="text-right"><?php echo!empty($totalInvestimentos) ? $this->formatDinheiroView($totalInvestimentos['valor']) : '0' ?></div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!--FIM .ROW-->
     <div class="row">
         <div class="col-md-6">
             <section class=" panel panel-black">
                 <header class="panel-heading">
                     <i class="fa fa-chart-pie fa-3x pull-left" ></i>
-                    <h4 class="panel-title font-bold">Associados </h4>
-                    <div>Associados Registrados</div>
+                    <h4 class="panel-title font-bold">Aluno </h4>
+                    <div>Objetivos Registrados</div>
                 </header>
                 <article class="panel-body">
-                    <canvas id="grafico_tipo_associado" width="100%" ></canvas>
+                    <canvas id="grafico_aluno_objetivo" width="100%" ></canvas>
                 </article>
             </section>
         </div>
@@ -83,25 +25,11 @@
             <section class=" panel panel-black">
                 <header class="panel-heading">
                     <i class="fa fa-chart-pie fa-3x pull-left" ></i>
-                    <h4 class="panel-title font-bold">Associados </h4>
-                    <div>Associados Registrados</div>
+                    <h4 class="panel-title font-bold">Alunos </h4>
+                    <div>Gêneros Registrados</div>
                 </header>
                 <article class="panel-body">
-                    <canvas id="grafico_associado_status" width="100%"></canvas>
-                </article>
-            </section>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <section class=" panel panel-black">
-                <header class="panel-heading">
-                    <i class="fa fa-chart-bar fa-3x pull-left" ></i>
-                    <h4 class="panel-title font-bold">Financeiro </h4>
-                    <div>Lucro, Despesa e Investimento</div>
-                </header>
-                <article class="panel-body">
-                    <canvas id="grafico_protocolo_objetivo" height="60vh"></canvas>
+                    <canvas id="grafico_aluno_genero" width="100%"></canvas>
                 </article>
             </section>
         </div>
@@ -111,29 +39,29 @@
             <section class="panel panel-black">
                 <header class="panel-heading">
                     <i class="fa fa-child  fa-3x pull-left"></i>                    
-                    <div class="font-bold">Produção</div>
-                    <div>Lista dos produtos produzidos na associção</div>
+                    <div class="font-bold">Turmas</div>
+                    <div>Lista de todos os alunos vinculado por turmas</div>
                 </header>
                 <article class="table-responsive">
                     <table class="table table-striped table-bordered table-hover table-condensed">
                         <tr>
                             <th width="50px">#</th>
-                            <th width="400px">Produto</th>
-                            <th width="150px">Total de produtores</th>
+                            <th width="400px">Turma</th>
+                            <th width="150px">Total de alunos</th>
                             <th>Porcentagem</th>
                         </tr>
                         <?php
-                        if (!empty($producao)):
+                        if (!empty($alunos)):
                             $qtd = 1;
-                            foreach ($producao as $index) :
+                            foreach ($alunos as $index) :
                                 ?>
                                 <tr>
                                     <td><?php echo $qtd ?></td>
-                                    <td><?php echo $index['producao'] ?></td>
+                                    <td><?php echo $index['turma'].' - '. $index['curso'] ?></td>
                                     <td><?php echo $index['qtd'] ?></td>
                                     <td>
                                         <div class = "progress" style = "margin-bottom: 0;">
-                                            <div class = "progress-bar progress-bar-striped progress-bar-animated bg-danger active" role = "progressbar" style = "width: <?php echo $this->getporcentagem($index['qtd'], $totalProducao) ?>%; height: 100%;" aria-valuenow = "100" aria-valuemin = "0" aria-valuemax = "<?php echo $this->getporcentagem($index['qtd'], $totalProducao) ?>"><?php echo $this->getporcentagem($index['qtd'], $totalProducao) ?>%</div>
+                                            <div class = "progress-bar progress-bar-striped progress-bar-animated bg-danger active" role = "progressbar" style = "width: <?php echo $this->getporcentagem($index['qtd'], $totalAluno) ?>%; height: 100%;" aria-valuenow = "100" aria-valuemin = "0" aria-valuemax = "<?php echo $this->getporcentagem($index['qtd'], $totalAluno) ?>"><?php echo $this->getporcentagem($index['qtd'], $totalAluno) ?>%</div>
                                         </div>
                                     </td>
                                 </tr>

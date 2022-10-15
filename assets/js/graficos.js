@@ -1,27 +1,28 @@
-graficoAssociado();
+graficoAlunoObjetivo();
 graficoFinanceiro();
 graficoAssociadoStatus();
-function graficoAssociado() {
+function graficoAlunoObjetivo() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             array = JSON.parse(this.responseText);
-            geraGraficoPizza(array, 'grafico_tipo_associado');
+            geraGraficoPizza(array, 'grafico_aluno_objetivo');
         }
     };
-    xhttp.open("GET", base_url + "/grafico/associado_tipo", true);
+    xhttp.open("GET", base_url + "/grafico/aluno_objetivo", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send();
 }
+
 function graficoAssociadoStatus() {
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             array = JSON.parse(this.responseText);
-            geraGraficoPizza(array, 'grafico_associado_status');
+            geraGraficoPizza(array, 'grafico_aluno_genero');
         }
     };
-    xhttp.open("GET", base_url + "/grafico/asssociado_status", true);
+    xhttp.open("GET", base_url + "/grafico/aluno_genero", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send();
 }

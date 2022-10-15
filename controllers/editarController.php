@@ -74,9 +74,9 @@ class EditarController extends controller {
                 $arrayCad['alergia'] = isset($_POST['nAlergia']) ? $_POST['nAlergia'] : ''; //nAlergia
                 $arrayCad['qual_alergia'] = isset($_POST['nQualAlergia']) ? $_POST['nQualAlergia'] : ''; //Alergia
                 $arrayCad['doenca'] = isset($_POST['nDoenca']) ? $_POST['nDoenca'] : ''; //nDoenca
-                $arrayCad['qual_doenca'] = isset($_POST['nQualAlergia']) ? $_POST['nQualDoenca'] : ''; //nDoenca
+                $arrayCad['qual_doenca'] = isset($_POST['nQualDoenca']) ? $_POST['nQualDoenca'] : ''; //nDoenca
                 $arrayCad['lesao'] = isset($_POST['nLesao']) ? $_POST['nLesao'] : ''; //nLesao
-                $arrayCad['qual_lesao'] = isset($_POST['nQualLesao']) ? $_POST['nQualDoenca'] : ''; //lesao
+                $arrayCad['qual_lesao'] = isset($_POST['nQualLesao']) ? $_POST['nQualLesao'] : ''; //lesao
                 $arrayCad['medicamento'] = isset($_POST['nMedicamento']) ? $_POST['nMedicamento'] : ''; //nMedicamento
                 $arrayCad['qual_medicamento'] = isset($_POST['nQualMedicamento']) ? $_POST['nQualMedicamento'] : ''; //lesao
                 $arrayCad['refeicoes'] = addslashes($_POST['nRefeicoes']);  //refeicoes
