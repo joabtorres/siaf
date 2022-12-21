@@ -29,7 +29,7 @@
                         <article class="panel-body">
                             <div class="row">
                                 <div class="col-md-12 form-group <?php echo (isset($formCad_error['cod_turma']['class'])) ? $formCad_error['cod_turma']['class'] : ''; ?>">
-                                    <label for="inCurso" class="control-label">Curso:* <?php echo (isset($formCad_error['cod_turma']['msg'])) ? '<small><span class = "glyphicon glyphicon-remove"></span> ' . $formCad_error['cod_turma']['msg'] . ' </small>' : ''; ?></label><br/>
+                                    <label for="inCurso" class="control-label">Turma:* <?php echo (isset($formCad_error['cod_turma']['msg'])) ? '<small><span class = "glyphicon glyphicon-remove"></span> ' . $formCad_error['cod_turma']['msg'] . ' </small>' : ''; ?></label><br/>
                                     <select id="inCurso" name="nCurso" class="form-control">
                                         <?php
                                         foreach ($turmas as $index) {
@@ -72,7 +72,7 @@
                                     <select id="iCor" name="nCor" class="form-control">
 
                                         <?php
-                                        $cores = array(array('cor' => 'Branco'), array('cor' => 'Pardo'), array('cor' => 'Amarelo'), array('cor' => 'Indígeno'));
+                                        $cores = array(array('cor' => 'Branco'), array('cor' => 'Pardo'), array('cor' => 'Preto'), array('cor' => 'Amarelo'), array('cor' => 'Indígeno'));
                                         foreach ($cores as $index) {
                                             if (isset($formCad['cor']) && $index['cor'] == $formCad['cor']) {
                                                 echo '<option value = "' . $index['cor'] . '" selected = "selected">' . $index['cor'] . '</option>';
@@ -187,7 +187,22 @@
                                     <input type="text" id="idap" name="nQualDoenca" class="form-control" value="<?php echo (!empty($formCad['qual_doenca'])) ? $formCad['qual_doenca'] : ''; ?>"/>
                                 </div>
 
-
+                                <div class="form-group col-md-12">
+                                    <span>Possui histórico de doenças na familiar?</span><br>
+                                    <?php
+                                    $arrayOpcoes = array("Não", "Sim");
+                                    $tagName = "nDoencaFamilia";
+                                    for ($i = 0; $i < count($arrayOpcoes); $i++) {
+                                        if (isset($formCad['doenca_na_familia']) && $formCad['doenca_na_familia'] == $arrayOpcoes[$i]) {
+                                            echo ' <label> <input type = "radio" name = "' . $tagName . '" value = "' . $arrayOpcoes[$i] . '" checked="true"/> ' . $arrayOpcoes[$i] . '</label>';
+                                        } else {
+                                            echo ' <label> <input type = "radio" name = "' . $tagName . '" value = "' . $arrayOpcoes[$i] . '" /> ' . $arrayOpcoes[$i] . '</label>';
+                                        }
+                                    }
+                                    ?>
+                                    <input type="text" id="idap" name="nQualDoencaFamilia" class="form-control" value="<?php echo (!empty($formCad['qual_doenca_na_familia'])) ? $formCad['qual_doenca_na_familia'] : ''; ?>"/>
+                                </div>
+                                
                                 <div class="form-group col-md-12">
                                     <span>Possui alguma lesão?</span><br>
                                     <?php
@@ -256,7 +271,7 @@
                                     <label for="iCPF" class="control-label">Qual a intensidade das atividades física?</label>
                                     <select id="iGenero" name="nIntensidadeFisica" class="form-control">
                                         <?php
-                                        $intensidade_atividade = array(array('atividade' => 'Inexistente'), array('atividade' => 'Leve'), array('atividade' => 'Moderada'), array('atividade' => 'Intensa'));
+                                        $intensidade_atividade = array(array('atividade' => 'Leve'), array('atividade' => 'Moderada'), array('atividade' => 'Intensa'));
                                         foreach ($intensidade_atividade as $index) {
                                             if (isset($formCad['suplemento']) && $formCad['suplemento'] == $intensidade_atividade['atividade']) {
                                                 echo '<option value = "' . $index['atividade'] . '" selected = "selected">' . $index['atividade'] . '</option>';
@@ -284,7 +299,7 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <span>Qual seu objetivo?</span><br/>
-                                    <select id="iGenero" name="nObjetivo" class="form-control">
+                                    <select id="inObjetivo" name="nObjetivo" class="form-control">
                                         <?php
                                         $objetivo = array(array('objetivo' => 'Emagrecimento'), array('objetivo' => 'Ganhar Massa Muscular'), array('objetivo' => 'Condicionamento Físico'), array('objetivo' => 'Bem-estar e Socialização'));
                                         foreach ($objetivo as $index) {

@@ -30,7 +30,7 @@ class excluirController extends controller {
     public function aluno($cod) {
         if ($this->checkUser() >= 3 && intval($cod) > 0) {
             $coopeadoModel = new aluno();
-            $aluno = $coopeadoModel->read_specific('SELECT * FROM aluno WHERE cod =:cod', array('cod' => addslashes($cod)));
+            $aluno = $coopeadoModel->read_specific('SELECT * FROM aluno WHERE cod =:cod AND cod_instituicao=:cod_instituicao', array('cod' => addslashes($cod), 'cod_instituicao' => $this->getCodInstituicao()));
             $coopeadoModel->delete_image($aluno['imagem']);
             $coopeadoModel->remove("DELETE FROM avaliacao_fisica WHERE cod_aluno=:cod", array('cod' => addslashes($cod)));
             $coopeadoModel->remove("DELETE FROM aluno WHERE cod=:cod", array('cod' => addslashes($cod)));
@@ -73,15 +73,15 @@ class excluirController extends controller {
         if ($this->checkUser() >= 3 && intval($cod) > 0) {
             $crudModel = new crud_db();
             $alunoModel = new aluno();
-            $alunos = $alunoModel->read('SELECT * FROM aluno WHERE cod_turma =:cod', array('cod' => addslashes($cod)));
+            $alunos = $alunoModel->read('SELECT * FROM aluno WHERE cod_turma =:cod and cod_instituicao=:cod_instituicao', array('cod' => addslashes($cod), 'cod_instituicao' => $this->getCodInstituicao()));
             if (!empty($alunos)) {
                 foreach ($alunos as $index) {
                     $alunoModel->delete_image($index['imagem']);
                     $alunoModel->remove("DELETE FROM avaliacao_fisica WHERE cod_aluno=:cod", array('cod' => $index['cod']));
                 }
             }
-            $alunoModel->remove("DELETE FROM aluno WHERE cod_turma=:cod", array('cod' => addslashes($cod)));
-            $removeFinanca = $crudModel->remove("DELETE FROM turma WHERE cod=:cod", array('cod' => addslashes($cod)));
+            $alunoModel->remove("DELETE FROM aluno WHERE cod_turma=:cod and cod_instituicao=:cod_instituicao", array('cod' => addslashes($cod), 'cod_instituicao' => $this->getCodInstituicao()));
+            $removeFinanca = $crudModel->remove("DELETE FROM turma WHERE cod=:cod and cod_instituicao=:cod_instituicao", array('cod' => addslashes($cod), 'cod_instituicao' => $this->getCodInstituicao()));
             if ($removeFinanca) {
                 $_SESSION['financa_atual'] = array();
                 $url = BASE_URL . "/relatorio/turma";

@@ -31,7 +31,7 @@ class controller {
     }
 
     public function ajustaHorario() {
-        return 3600 * 4; //360 sec *  horas 
+        return 3600 * 5; //360 sec *  horas 
     }
 
     public function getporcentagem($valorInicial, $valorTotal) {

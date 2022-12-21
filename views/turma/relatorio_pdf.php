@@ -21,7 +21,7 @@
         <table style="width:100%; ">	    
             <tr>
                 <td align="left">
-                    <img src="<?php echo BASE_URL . '/assets/imagens/logo-aparaa.png'; ?>" alt="Logo" style="width: 80px;"/>
+                    <img src="<?php echo BASE_URL . '/assets/imagens/ifpa.png'; ?>" alt="Logo" style="width: 100px;"/>
 
                 </td>
                 <td align="left">
@@ -35,13 +35,13 @@
                     </p>
                 </td>
                 <td align="right">
-                    <img src="<?php echo BASE_URL . '/assets/imagens/ifpa_sigapa.png'; ?>" alt="Logo" style="width: 140px;"/>
+                    <img src="<?php echo BASE_URL . '/assets/imagens/logo.png'; ?>" alt="Logo" style="width: 140px;"/>
                 </td>
             </tr>
             <tr>
                 <td align="center" colspan="3">
                     <p><?php echo NAME_PROJECT ?></p><br/>
-                    <h4>Relatório de Entradas</h4>
+                    <h4>Relatório de Turmas</h4>
                 </td>
             </tr>
         </table>
@@ -52,35 +52,38 @@
                     <table class="table">
 
                         <tr>
-                            <th>De</th>
-                            <th>Até</th>
+                            <th>Curso</th>
+                            <th>Por</th>
+                            <th>Buscar</th>
                         </tr>
                         <tr>
-                            <td><?php echo $busca['data_inicial'] ?></td>
-                            <td><?php echo $busca['data_final'] ?></td>
+                            <td><?php echo $busca['curso'] ?></td>
+                            <td><?php echo $busca['por'] ?></td>
+                            <td><?php echo $busca['campo'] ?></td>
                         </tr>
                     </table>
                 <?php endif; ?>
                 <hr>
-                <?php if (!empty($financas)): ?>
-                    <h5 class="text-right">Valor Total: <?php echo $this->formatDinheiroView($valor_total) ?></h5>
-                    <h4 class="text-right">Total: <?php echo count($financas) > 1 ? count($financas) . ' registros encontrados' : count($financas) . ' registro encontrado' ?>.</h4>
+                <?php if (!empty($turmas)): ?>
+                    <h4 class="text-right">Total: <?php echo count($turmas) > 1 ? count($turmas) . ' registros encontrados' : count($turmas) . ' registro encontrado' ?>.</h4>
                     <table class="table">
                         <tr>
                             <th>#</th>
-                            <th>Descrição</th>
-                            <th>Data</th>
-                            <th>Valor</th>
+                            <th>Curso</th>
+                            <th>Turma</th>
+                            <th>Ano</th>
+                            <th>Qtd de Alunos</th>
                         </tr>
                         <?php
                         $qtd = 1;
-                        foreach ($financas as $financa):
+                        foreach ($turmas as $index):
                             ?>
                             <tr>
-                                <td><?php echo $qtd ?></td>
-                                <td><?php echo!empty($financa['descricao']) ? $financa['descricao'] : '' ?></td>
-                                <td><?php echo!empty($financa['descricao']) ? $this->formatDateView($financa['data']) : '' ?></td>
-                                <td><?php echo!empty($financa['descricao']) ? $this->formatDinheiroView($financa['valor']) : '' ?></td>
+                                <td width="40px"><?php echo $qtd ?></td>
+                                <td><?php echo!empty($index['curso']) ? $index['curso'] : '' ?></td>
+                                <td><?php echo!empty($index['turma']) ? $index['turma'] : '' ?></td>
+                                <td><?php echo!empty($index['ano']) ? $index['ano'] : '' ?></td>
+                                 <td width="120px"><?php echo!empty($index['qtd']) ? $index['qtd'] : '0' ?></td>
                             </tr>
                             <?php
                             ++$qtd;

@@ -33,11 +33,11 @@ class alunoController extends controller {
 
     public function pdf($cod_aluno) {
         if ($this->checkUser() && !empty($cod_aluno)) {
-            $viewName = "associado/perfil_pdf";
+            $viewName = "aluno/perfil_pdf";
             $dados = array();
             $crudModel = new crud_db();
             $dados['cidade'] = $crudModel->read_specific('SELECT * FROM instituicao WHERE cod=:cod', array('cod' => $this->getCodInstituicao()));
-            $dados['aluno']['aluno'] = $crudModel->read_specific('SELECT a.*, t.turma, t.curso FROM aluno as a INNER JOIN turma as t WHERE t.cod=a.cod_turma AND a.cod=:cod', array('cod' => addslashes($cod_aluno)));
+            $dados['aluno'] = $crudModel->read_specific('SELECT a.*, t.turma, t.curso FROM aluno as a INNER JOIN turma as t WHERE t.cod=a.cod_turma AND a.cod=:cod', array('cod' => addslashes($cod_aluno)));
             $dados['aluno']['avaliacao_fisica'] = $crudModel->read('SELECT * FROM avaliacao_fisica where cod_aluno=:cod', array('cod' => addslashes($cod_aluno)));
             $this->loadView($viewName, $dados);
         } else {

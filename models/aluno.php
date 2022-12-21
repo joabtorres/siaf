@@ -39,7 +39,7 @@ class aluno extends model {
      */
     public function create($data) {
         try {
-            $sql = $this->db->prepare('INSERT INTO aluno(cod, cod_instituicao, cod_turma, nome, nascimento, genero, altura, cor, pressao, frequencia_cardiaca, glicose, fumante, alergia, qual_alergia, doenca, qual_doenca, lesao, qual_lesao, medicamento, qual_medicamento, refeicoes, bebidas, atividade_fisica, qual_atividade_fisica, intensidade_fisica, suplemento, qual_suplemento, objetivo, imagem) VALUES (:cod, :cod_instituicao, :cod_turma, :nome, :nascimento, :genero, :altura, :cor, :pressao, :frequencia_cardiaca, :glicose, :fumante, :alergia, :qual_alergia, :doenca, :qual_doenca, :lesao, :qual_lesao, :medicamento, :qual_medicamento, :refeicoes, :bebidas, :atividade_fisica, :qual_atividade_fisica, :intensidade_fisica, :suplemento, :qual_suplemento, :objetivo, :imagem)');
+            $sql = $this->db->prepare('INSERT INTO aluno(cod, cod_instituicao, cod_turma, nome, nascimento, genero, altura, cor, pressao, frequencia_cardiaca, glicose, fumante, alergia, qual_alergia, doenca, qual_doenca, doenca_na_familia, qual_doenca_na_familia, lesao, qual_lesao, medicamento, qual_medicamento, refeicoes, bebidas, atividade_fisica, qual_atividade_fisica, intensidade_fisica, suplemento, qual_suplemento, objetivo, imagem) VALUES (:cod, :cod_instituicao, :cod_turma, :nome, :nascimento, :genero, :altura, :cor, :pressao, :frequencia_cardiaca, :glicose, :fumante, :alergia, :qual_alergia, :doenca, :qual_doenca, :doenca_na_familia, :qual_doenca_na_familia,:lesao, :qual_lesao, :medicamento, :qual_medicamento, :refeicoes, :bebidas, :atividade_fisica, :qual_atividade_fisica, :intensidade_fisica, :suplemento, :qual_suplemento, :objetivo, :imagem)');
             $sql->bindValue(":cod", $data['cod']);
             $sql->bindValue(":cod_instituicao", $data['cod_instituicao']);
             $sql->bindValue(":cod_turma", $data['cod_turma']);
@@ -56,6 +56,8 @@ class aluno extends model {
             $sql->bindValue(":qual_alergia", $data['qual_alergia']);
             $sql->bindValue(":doenca", $data['doenca']);
             $sql->bindValue(":qual_doenca", $data['qual_doenca']);
+            $sql->bindValue(":doenca_na_familia", $data['doenca_na_familia']);
+            $sql->bindValue(":qual_doenca_na_familia", $data['qual_doenca_na_familia']);
             $sql->bindValue(":lesao", $data['lesao']);
             $sql->bindValue(":qual_lesao", $data['qual_lesao']);
             $sql->bindValue(":medicamento", $data['medicamento']);
@@ -141,7 +143,7 @@ class aluno extends model {
      */
     public function update($data) {
         try {
-            $sql = $this->db->prepare('UPDATE aluno SET cod_instituicao=:cod_instituicao, cod_turma=:cod_turma, nome=:nome, nascimento=:nascimento, genero=:genero, altura=:altura, cor=:cor, pressao=:pressao, frequencia_cardiaca=:frequencia_cardiaca, glicose=:glicose, fumante=:fumante, alergia=:alergia, qual_alergia=:qual_alergia, doenca=:doenca, qual_doenca=:qual_doenca, lesao=:lesao, qual_lesao=:qual_lesao, medicamento=:medicamento, qual_medicamento=:qual_medicamento, refeicoes=:refeicoes, bebidas=:bebidas, atividade_fisica=:atividade_fisica, qual_atividade_fisica=:qual_atividade_fisica, intensidade_fisica=:intensidade_fisica, suplemento=:suplemento, qual_suplemento=:qual_suplemento, objetivo=:objetivo, imagem=:imagem WHERE cod=:cod');
+            $sql = $this->db->prepare('UPDATE aluno SET cod_instituicao=:cod_instituicao, cod_turma=:cod_turma, nome=:nome, nascimento=:nascimento, genero=:genero, altura=:altura, cor=:cor, pressao=:pressao, frequencia_cardiaca=:frequencia_cardiaca, glicose=:glicose, fumante=:fumante, alergia=:alergia, qual_alergia=:qual_alergia, doenca=:doenca, qual_doenca=:qual_doenca, doenca_na_familia=:doenca_na_familia, qual_doenca_na_familia=:qual_doenca_na_familia, lesao=:lesao, qual_lesao=:qual_lesao, medicamento=:medicamento, qual_medicamento=:qual_medicamento, refeicoes=:refeicoes, bebidas=:bebidas, atividade_fisica=:atividade_fisica, qual_atividade_fisica=:qual_atividade_fisica, intensidade_fisica=:intensidade_fisica, suplemento=:suplemento, qual_suplemento=:qual_suplemento, objetivo=:objetivo, imagem=:imagem WHERE cod=:cod');
             $sql->bindValue(":cod_instituicao", $data['cod_instituicao']);
             $sql->bindValue(":cod_turma", $data['cod_turma']);
             $sql->bindValue(":nome", $data['nome']);
@@ -156,6 +158,8 @@ class aluno extends model {
             $sql->bindValue(":alergia", $data['alergia']);
             $sql->bindValue(":qual_alergia", $data['qual_alergia']);
             $sql->bindValue(":doenca", $data['doenca']);
+            $sql->bindValue(":doenca_na_familia", $data['doenca_na_familia']);
+            $sql->bindValue(":qual_doenca_na_familia", $data['qual_doenca_na_familia']);
             $sql->bindValue(":qual_doenca", $data['qual_doenca']);
             $sql->bindValue(":lesao", $data['lesao']);
             $sql->bindValue(":qual_lesao", $data['qual_lesao']);

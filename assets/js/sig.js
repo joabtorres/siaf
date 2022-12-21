@@ -120,6 +120,7 @@ if (document.getElementById("formAluno")) {
         //ao carregar a página
         validarCampo($("input[name='nAlergia']:checked").val(), "nQualAlergia");
         validarCampo($("input[name='nDoenca']:checked").val(), "nQualDoenca");
+        validarCampo($("input[name='nDoencaFamilia']:checked").val(), "nQualDoencaFamilia");
         validarCampo($("input[name='nLesao']:checked").val(), "nQualLesao");
         validarCampo($("input[name='nMedicamento']:checked").val(), "nQualMedicamento");
         validarCampo($("input[name='nAtividadeFisica']:checked").val(), "nQualAtividadeFisica");
@@ -130,6 +131,9 @@ if (document.getElementById("formAluno")) {
         });
         $("input[name='nDoenca']").click(function () {
             validarCampo(this.value, "nQualDoenca");
+        });
+        $("input[name='nDoencaFamilia']").click(function () {
+            validarCampo(this.value, "nQualDoencaFamilia");
         });
         $("input[name='nLesao']").click(function () {
             validarCampo(this.value, "nQualLesao");

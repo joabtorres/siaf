@@ -22,8 +22,8 @@ class homeController extends controller {
             $view = "home";
             $dados = array();
             $crudModel = new crud_db();
-            $dados['alunos'] = $crudModel->read('SELECT a.*, t.turma, t.curso, COUNT(*) as qtd FROM aluno as a INNER JOIN turma as t WHERE t.cod=a.cod_turma GROUP BY t.turma ORDER BY qtd DESC');
-            $resultado = $crudModel->read_specific('SELECT COUNT(*) as qtd FROM aluno ');
+            $dados['alunos'] = $crudModel->read('SELECT a.*, t.turma, t.curso, COUNT(*) as qtd FROM aluno as a INNER JOIN turma as t WHERE t.cod=a.cod_turma and a.cod_instituicao=:cod GROUP BY t.turma ORDER BY qtd DESC', array('cod' => $this->getCodInstituicao()));
+            $resultado = $crudModel->read_specific('SELECT COUNT(*) as qtd FROM aluno where cod_instituicao=:cod', array('cod' => $this->getCodInstituicao()));
             $dados['totalAluno'] = 0;
             if (!empty($resultado)) {
                 $dados['totalAluno'] = $resultado['qtd'];

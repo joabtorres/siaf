@@ -35,7 +35,7 @@
                                     <p><span class="text-destaque">Nome:</span> <?php echo!empty($aluno['aluno']['nome']) ? $aluno['aluno']['nome'] : '' ?></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><span class="text-destaque">Curso:</span> <?php echo!empty($aluno['aluno']['turma']) ? $aluno['aluno']['turma'] . ' - Curso: ' . $aluno['aluno']['curso'] : '' ?></p>
+                                    <p><span class="text-destaque">Turma:</span> <?php echo!empty($aluno['aluno']['turma']) ? $aluno['aluno']['turma'] . ' - Curso: ' . $aluno['aluno']['curso'] : '' ?></p>
                                 </div>
                             </div>
                             <!--fim row-->
@@ -95,6 +95,9 @@
                         </div>
                         <div class="col-sm-6 col-md-3 ">
                             <p><span class="text-destaque">Doenças anteriores:</span> <?php echo!empty($aluno['aluno']['doenca']) ? !empty($aluno['aluno']['doenca'] == "Sim") ? $aluno['aluno']['doenca'] . ', ' . $aluno['aluno']['qual_doenca'] : $aluno['aluno']['doenca'] : '' ?></p>
+                        </div>
+                        <div class="col-sm-6 col-md-3 ">
+                            <p><span class="text-destaque">Histórico de doenças na fámilia:</span> <?php echo!empty($aluno['aluno']['doenca_na_familia']) ? !empty($aluno['aluno']['doenca_na_familia'] == "Sim") ? $aluno['aluno']['doenca_na_familia'] . ', ' . $aluno['aluno']['qual_doenca_na_familia'] : $aluno['aluno']['doenca_na_familia'] : '' ?></p>
                         </div>
                         <div class="col-sm-6 col-md-3 ">
                             <p><span class="text-destaque">Lesão:</span> <?php echo!empty($aluno['aluno']['lesao']) ? !empty($aluno['aluno']['lesao'] == "Sim") ? $aluno['aluno']['lesao'] . ', ' . $aluno['aluno']['qual_lesao'] : $aluno['aluno']['lesao'] : '' ?></p>
@@ -171,10 +174,10 @@
                                                             <p><span class="text-destaque">Cintura:</span> <?php echo!empty($index['cintura']) ? $this->removeZeroEsquerda($index['cintura']) : '' ?></p>
                                                         </div>
                                                         <div class="col-sm-6 col-md-3 ">
-                                                            <p><span class="text-destaque">braço direito:</span> <?php echo!empty($index['braco_direito']) ? $this->removeZeroEsquerda($index['braco_direito']) : '' ?></p>
+                                                            <p><span class="text-destaque">Braço direito:</span> <?php echo!empty($index['braco_direito']) ? $this->removeZeroEsquerda($index['braco_direito']) : '' ?></p>
                                                         </div>
                                                         <div class="col-sm-6 col-md-3 ">
-                                                            <p><span class="text-destaque">braço esquerdo:</span> <?php echo!empty($index['braco_esquerdo']) ? $this->removeZeroEsquerda($index['braco_esquerdo']) : '' ?></p>
+                                                            <p><span class="text-destaque">Braço esquerdo:</span> <?php echo!empty($index['braco_esquerdo']) ? $this->removeZeroEsquerda($index['braco_esquerdo']) : '' ?></p>
                                                         </div>
                                                         <div class="col-sm-6 col-md-3 ">
                                                             <p><span class="text-destaque">Antebraço direito:</span> <?php echo!empty($index['antebraco_direito']) ? $this->removeZeroEsquerda($index['antebraco_direito']) : '' ?></p>

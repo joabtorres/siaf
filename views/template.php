@@ -77,7 +77,7 @@
                             </form>
                         </li>
                     <?php endif; ?>
-                    <li class="dropdown">
+                    <li class="dropdown" id="submenu_usuario">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $_SESSION['usuario_sessao']['nome'] ?> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -154,10 +154,7 @@
                                 <li>
                                     <a href="<?php echo BASE_URL . '/instituicao/index/' . $this->getCodInstituicao() ?>"><i class="fa fa-home"></i> Instituição</a>
                                 </li>
-                            <?php endif; ?>
-                            <li>
-                                <a href="<?php echo BASE_URL ?>/manual"><i class="fa fa-book"></i> Manual</a>
-                            </li>
+                            <?php endif; ?> 
                             <li>
                                 <a href="<?php echo BASE_URL ?>/usuario/sair"><i class="fa fa-sign-out-alt"></i> Sair</a>
                             </li>

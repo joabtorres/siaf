@@ -148,6 +148,7 @@ form label{
     white-space: normal;
 }
 @media (max-width: 768px){
+    #submenu_usuario{display: none;}
     .navbar-fixed-top{
         position: relative;
     }
@@ -189,6 +190,14 @@ form label{
         color: #fff !important;
     }
 
+}
+.side-nav li a:hover, .side-nav li a:focus {
+    outline: none;
+    background-color: #007051 !important;
+    color: #fff !important;
+}
+.navbar-inverse .navbar-toggle{
+    background-color: #007051;
 }
 @media (max-width: 768px){
     .side-nav>figure{

@@ -80,24 +80,26 @@
                                 <th>Curso</th>
                                 <th>Turma</th>
                                 <th>Ano</th>
+                                <th>Qtd de Alunos</th>
                                 <?php if ($this->checkUser() >= 2) : ?>
                                     <th>Ação</th>
                                 <?php endif; ?>
                             </tr>
                             <?php
                             $qtd = 1;
-                            foreach ($turmas as $financa):
+                            foreach ($turmas as $index):
                                 ?>
                                 <tr>
                                     <td width="40px"><?php echo $qtd ?></td>
-                                    <td><?php echo!empty($financa['curso']) ? $financa['curso'] : '' ?></td>
-                                    <td><?php echo!empty($financa['turma']) ? $financa['turma'] : '' ?></td>
-                                    <td><?php echo!empty($financa['ano']) ? $financa['ano'] : '' ?></td>
+                                    <td><?php echo!empty($index['curso']) ? $index['curso'] : '' ?></td>
+                                    <td><?php echo!empty($index['turma']) ? $index['turma'] : '' ?></td>
+                                    <td><?php echo!empty($index['ano']) ? $index['ano'] : '' ?></td>
+                                    <td width="120px"><?php echo!empty($index['qtd']) ? $index['qtd'] : '0' ?></td>
                                     <?php if ($this->checkUser() >= 2) { ?>
                                         <td class="table-acao">
-                                            <a class="btn btn-primary btn-xs" href="<?php echo BASE_URL . '/editar/turma/' . $financa['cod']; ?>" title="Editar"><i class="fa fa-pencil-alt"></i></a> 
+                                            <a class="btn btn-primary btn-xs" href="<?php echo BASE_URL . '/editar/turma/' . $index['cod']; ?>" title="Editar"><i class="fa fa-pencil-alt"></i></a> 
                                             <?php if ($this->checkUser() >= 3) { ?>
-                                                <button type="button"  class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal_turma_<?php echo $financa['cod'] ?>" title="Excluir"><i class="fa fa-trash"></i></button>
+                                                <button type="button"  class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal_turma_<?php echo $index['cod'] ?>" title="Excluir"><i class="fa fa-trash"></i></button>
                                             </td>
                                             <?php
                                         }
@@ -129,10 +131,10 @@
 </div>
 <?php
 if (isset($turmas) && is_array($turmas)) :
-    foreach ($turmas as $financa) :
+    foreach ($turmas as $index) :
         ?>        
         <!--MODAL - ESTRUTURA BÁSICA-->
-        <section class="modal fade" id="modal_turma_<?php echo $financa['cod'] ?>" tabindex="-1" role="dialog">
+        <section class="modal fade" id="modal_turma_<?php echo $index['cod'] ?>" tabindex="-1" role="dialog">
             <article class="modal-dialog modal-md" role="document">
                 <section class="modal-content">
                     <header class="modal-header bg-primary">
@@ -141,15 +143,15 @@ if (isset($turmas) && is_array($turmas)) :
                     </header>
                     <article class="modal-body">
                         <ul class="list-unstyled">
-                            <li><b>Código: </b> <?php echo!empty($financa['cod']) ? $financa['cod'] : '' ?>;</li>
-                            <li><b>Curso: </b> <?php echo!empty($financa['curso']) ? $financa['curso'] : '' ?>;</li>
-                            <li><b>Turma: </b> <?php echo!empty($financa['turma']) ? $financa['turma'] : '' ?>;</li>
-                            <li><b>Anoo: </b> <?php echo!empty($financa['ano']) ? $financa['ano'] : '' ?>;</li>
+                            <li><b>Código: </b> <?php echo!empty($index['cod']) ? $index['cod'] : '' ?>;</li>
+                            <li><b>Curso: </b> <?php echo!empty($index['curso']) ? $index['curso'] : '' ?>;</li>
+                            <li><b>Turma: </b> <?php echo!empty($index['turma']) ? $index['turma'] : '' ?>;</li>
+                            <li><b>Anoo: </b> <?php echo!empty($index['ano']) ? $index['ano'] : '' ?>;</li>
                         </ul>
                         <p class="text-justify text-danger"><span class="font-bold">OBS : </span> Ao clicar em "Excluir", este registro deixará de existir no sistema.</p>
                     </article>
                     <footer class="modal-footer">
-                        <a class="btn btn-danger pull-left" href="<?php echo BASE_URL . '/excluir/turma/' . $financa['cod'] ?>"> <i class="fa fa-trash"></i> Excluir</a> 
+                        <a class="btn btn-danger pull-left" href="<?php echo BASE_URL . '/excluir/turma/' . $index['cod'] ?>"> <i class="fa fa-trash"></i> Excluir</a> 
                         <button class="btn btn-default" type="button" data-dismiss="modal"><i class="fa fa-times"></i> Fechar</button>
                     </footer>
                 </section>

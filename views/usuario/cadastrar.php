@@ -76,9 +76,7 @@
 
                         <div class="form-group">
                             <span>Nível de Acesso:</span><br/>
-                            <label><input type="radio" name="tNivelDeAcesso" value="1" checked/> Participante</label>
-                            <label><input type="radio" name="tNivelDeAcesso" value="2"/> Moderador</label>
-                            <label><input type="radio" name="tNivelDeAcesso" value="3"/> Adminstrador</label>
+                            <label><input type="radio" name="tNivelDeAcesso" value="3" checked/> Adminstrador</label>
                         </div>
 
                         <p class="text-center" style="margin-top: 10%;" id="fotos">

@@ -19,7 +19,7 @@ ob_start();
         <table style="width:100%; ">	    
             <tr>
                 <td align="left">
-                    <img src="<?php echo BASE_URL . '/assets/imagens/logo-aparaa.png'; ?>" alt="Logo" style="width: 80px;"/>
+                    <img src="<?php echo BASE_URL . '/assets/imagens/ifpa.png'; ?>" alt="Logo" style="width: 80px;"/>
 
                 </td>
                 <td align="left">
@@ -33,13 +33,13 @@ ob_start();
                     </p>
                 </td>
                 <td align="right">
-                    <img src="<?php echo BASE_URL . '/assets/imagens/ifpa_sigapa.png'; ?>" alt="Logo" style="width: 140px;"/>
+                    <img src="<?php echo BASE_URL . '/assets/imagens/logo.png'; ?>" alt="Logo" style="width: 140px;"/>
                 </td>
             </tr>
             <tr>
                 <td align="center" colspan="3">
                     <p><?php echo NAME_PROJECT ?></p><br/>
-                    <h4>Ficha do Associado</h4>
+                    <h4>Ficha do Aluno</h4>
                 </td>
             </tr>
         </table>
@@ -49,180 +49,111 @@ ob_start();
                 <th colspan="4"><h4 class="text-destaque">Dados Pessoais</h4></th>
             </tr>
             <tr>
-                <td rowspan="6"><img src="<?php echo!empty($cooperado['cooperado']['imagem']) ? BASE_URL . '/' . $cooperado['cooperado']['imagem'] : BASE_URL . '/assets/imagens/foto_ilustrato3x4.png' ?>" width="100px"/></td>
+                <td rowspan="5"><img src="<?php echo!empty($aluno['imagem']) ? BASE_URL . '/' . $aluno['imagem'] : BASE_URL . '/assets/imagens/foto_ilustrato3x4.png' ?>" width="100px"/></td>
             </tr>
             <tr>
-                <td><span class="text-destaque">Apelido:</span><br> <?php echo!empty($cooperado['cooperado']['apelido']) ? $cooperado['cooperado']['apelido'] : '' ?></td>
-                <td><span class="text-destaque">Nome:</span><br> <?php echo!empty($cooperado['cooperado']['nome_completo']) ? $cooperado['cooperado']['nome_completo'] : '' ?></td>
-                <td><span class="text-destaque">Categoria:</span> <br><?php echo!empty($cooperado['cooperado']['tipo']) ? $cooperado['cooperado']['tipo'] : '' ?></td>
+                <td><span class="text-destaque">Nome:</span><br> <?php echo!empty($aluno['nome']) ? $aluno['nome'] : '' ?></td>
+                <td colspan="2"><span class="text-destaque" >Turma:</span> <br><?php echo!empty($aluno['turma']) ? $aluno['turma'] . ' - Curso: ' . $aluno['curso'] : '' ?></td>
             </tr>
             <tr>
-                <td><span class="text-destaque">Nº DE MATRICULA:</span> <br><?php echo!empty($cooperado['cooperado']['cod']) ? str_pad($cooperado['cooperado']['cod'], 3, '0', STR_PAD_LEFT) : '' ?></td>
-                <td><span class="text-destaque">Nº DO CAR:</span> <br><?php echo!empty($cooperado['cooperado']['dap']) ? $cooperado['cooperado']['dap'] : '' ?></td>
-                <td><span class="text-destaque">Nº DO DAP:</span> <br><?php echo!empty($cooperado['cooperado']['cpf']) ? $cooperado['cooperado']['cpf'] : '' ?></td>
+                <td><span class="text-destaque">Data de Nascimento:</span> <br><?php echo!empty($aluno['nascimento']) ? $this->formatDateView($aluno['nascimento']) : '' ?></td>
+                <td><span class="text-destaque">Idade:</span> <br><?php echo!empty($aluno['nascimento']) ? $this->calcularIdade($aluno['nascimento']) : '' ?></td>
+                <td><span class="text-destaque">Gênero:</span> <br><?php echo!empty($aluno['genero']) ? $aluno['genero'] : '' ?></td>
             </tr>
             <tr>
-                <td><span class="text-destaque">Status:</span> <br><?php echo!empty($cooperado['cooperado']['status']) ? "Ativo" : "Inativo" ?></td>
-                <td><span class="text-destaque">RG:</span> <br><?php echo!empty($cooperado['cooperado']['rg']) ? $cooperado['cooperado']['rg'] : '' ?></td>                                      
-                <td><span class="text-destaque">CPF:</span> <br><?php echo!empty($cooperado['cooperado']['cpf']) ? $cooperado['cooperado']['cpf'] : '' ?></td>
+                <td><span class="text-destaque">Altura:</span> <br><?php echo!empty($aluno['altura']) ? $aluno['altura'] : '' ?></td>
+                <td><span class="text-destaque">Cor/Raça:</span> <br><?php echo!empty($aluno['cor']) ? $aluno['cor'] : '' ?></td>                                      
+                <td><span class="text-destaque">Pressão:</span> <br><?php echo!empty($aluno['pressao']) ? $aluno['pressao'] : '' ?></td>
             </tr>
             <tr>
-                <td><span class="text-destaque">Gênero:</span> <br><?php echo!empty($cooperado['cooperado']['genero']) ? $cooperado['cooperado']['genero'] : '' ?></td>                                      
-                <td><span class="text-destaque">Estado Cívil:</span> <br><?php echo!empty($cooperado['cooperado']['estado_civil']) ? $cooperado['cooperado']['estado_civil'] : '' ?></td>
-                <td><span class="text-destaque">Nacionalidade:</span> <br><?php echo!empty($cooperado['cooperado']['nacionalidade']) ? $cooperado['cooperado']['nacionalidade'] : '' ?></td>
-            </tr>
-            <tr>
-                <td><span class="text-destaque">Nascimento:</span> <br><?php echo!empty($cooperado['cooperado']['data_nascimento']) ? $this->formatDateView($cooperado['cooperado']['data_nascimento']) : '' ?></td>
-                <td><span class="text-destaque">Data de Inscrição:</span> <br><?php echo!empty($cooperado['cooperado']['data_inscricao']) ? $this->formatDateView($cooperado['cooperado']['data_inscricao']) : '' ?></td>
-            </tr>
-        </table>
-        <table class="table">
-            <tr>
-                <th colspan="2"><h4 class="text-destaque">Familiares</h4></th>
-            </tr>
-            <tr>
-                <td><span class="text-destaque">Pai:</span><br> <?php echo!empty($cooperado['cooperado']['pai']) ? $cooperado['cooperado']['pai'] : '' ?></td>
-                <td><span class="text-destaque">Mãe:</span><br> <?php echo!empty($cooperado['cooperado']['mae']) ? $cooperado['cooperado']['mae'] : '' ?></td>
-            </tr>
-            <tr>
-                <td><span class="text-destaque">Cônjuge:</span><br> <?php echo!empty($cooperado['cooperado']['conjugue']) ? $cooperado['cooperado']['conjugue'] : '' ?></td>
-                <td><span class="text-destaque">Filhos:</span><br> <?php echo!empty($cooperado['cooperado']['filhos']) ? $cooperado['cooperado']['filhos'] : '' ?></td>
-            </tr>
-        </table>
-        <table class="table">
-            <tr>
-                <th colspan="1"><h4 class="text-destaque">Endereço</h4></th>
-            </tr>
-            <tr>
-                <td> <?php echo!empty($cooperado['endereco']['logradouro']) ? $cooperado['endereco']['logradouro'] : '' ?>, <?php echo!empty($cooperado['endereco']['numero']) ? 'nº ' . $cooperado['endereco']['numero'] : 'S/N' ?>, <?php echo!empty($cooperado['endereco']['bairro']) ? 'bairro ' . $cooperado['endereco']['bairro'] : '' ?>, <?php echo!empty($cooperado['endereco']['complemento']) ? $cooperado['endereco']['complemento'] : '' ?> - <?php echo!empty($cooperado['endereco']['cidade']) ? $cooperado['endereco']['cidade'] : '' ?>  - <?php echo!empty($cooperado['endereco']['estado']) ? $cooperado['endereco']['estado'] : '' ?> <?php echo!empty($cooperado['endereco']['cep']) ? ' - CEP: ' . $cooperado['endereco']['cep'] : '' ?></td>
-            </tr>
-        </table>        
-        <table class="table">
-            <tr>
-                <th colspan="3"><h4 class="text-destaque">Validade da Carteira</h4></th>
-            </tr>
-            <tr>
-                <td><span class="text-destaque">Data de Emissão:</span><br> <?php echo!empty($cooperado['carteira']['data_inicial']) ? $this->formatDateView($cooperado['carteira']['data_inicial']) : '' ?></td>
-                <td><span class="text-destaque">Data de Validade:</span><br> <?php echo!empty($cooperado['carteira']['data_validade']) ? $this->formatDateView($cooperado['carteira']['data_validade']) : '' ?></td>
+                <td><span class="text-destaque">Frequência cardiaca em repouso:</span> <?php echo!empty($aluno['frequencia_cardiaca']) ? $this->removeZeroEsquerda($aluno['frequencia_cardiaca']) : '' ?></td>                                      
+                <td><span class="text-destaque">Glicose:</span><br> <?php echo!empty($aluno['glicose']) ? $this->removeZeroEsquerda($aluno['glicose']) : '' ?></td>
             </tr>
         </table>
 
         <table class="table">
             <tr>
-                <th colspan="3"><h4 class="text-destaque">Relatório de Produção</h4></th>
+                <th colspan="4"><h4 class="text-destaque">Questões</h4></th>
+            </tr>
+
+            <tr>
+                <td><span class="text-destaque">Fumante:</span> <br><?php echo!empty($aluno['fumante']) ? $aluno['fumante'] : '' ?></td>
+                <td><span class="text-destaque">Alergia:</span> <br><?php echo!empty($aluno['alergia']) ? !empty($aluno['alergia'] == "Sim") ? $aluno['alergia'] . ', ' . $aluno['qual_alergia'] : $aluno['alergia'] : '' ?></td>
+                <td ><span class="text-destaque">Doenças anteriores:</span> <br><?php echo!empty($aluno['doenca']) ? !empty($aluno['doenca'] == "Sim") ? $aluno['doenca'] . ', ' . $aluno['qual_doenca'] : $aluno['doenca'] : '' ?></td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+                <td><span class="text-destaque">Histórico de doenças na fámilia:</span> <br><?php echo!empty($aluno['doenca_na_familia']) ? !empty($aluno['doenca_na_familia'] == "Sim") ? $aluno['doenca_na_familia'] . ', ' . $aluno['qual_doenca_na_familia'] : $aluno['doenca_na_familia'] : '' ?></td>
+                <td><span class="text-destaque">Lesão:</span> <br><?php echo!empty($aluno['lesao']) ? !empty($aluno['lesao'] == "Sim") ? $aluno['lesao'] . ', ' . $aluno['qual_lesao'] : $aluno['lesao'] : '' ?></td>
+                <td><span class="text-destaque">Uso de medicamento(s):</span> <br><?php echo!empty($aluno['medicamento']) ? !empty($aluno['medicamento'] == "Sim") ? $aluno['medicamento'] . ', ' . $aluno['qual_medicamento'] : $aluno['medicamento'] : '' ?></td>
+            </tr>
+            <tr>
+                <td><span class="text-destaque">Numéro de refeições diárias:</span> <br><?php echo!empty($aluno['refeicoes']) ? $aluno['refeicoes'] : '' ?></td>
+                <td><span class="text-destaque">Consome de bebidas alcoólicas:</span> <br><?php echo!empty($aluno['bebidas']) ? $aluno['bebidas'] : '' ?></td>
+                <td><span class="text-destaque">Atividade física praticada:</span> <br><?php echo!empty($aluno['atividade_fisica']) ? !empty($aluno['atividade_fisica'] == "Sim") ? $aluno['atividade_fisica'] . ', ' . $aluno['qual_atividade_fisica'] : $aluno['atividade_fisica'] : '' ?></td>                                      
+            </tr>
+            <tr>
+                <td><span class="text-destaque">Intensidade de Atividade Física:</span><br> <?php echo!empty($aluno['intensidade_fisica']) ? $aluno['intensidade_fisica'] : '' ?></td>
+                <td><span class="text-destaque">Suplemento:</span> <br> <?php echo!empty($aluno['suplemento']) ? !empty($aluno['suplemento'] == "Sim") ? $aluno['suplemento'] . ', ' . $aluno['qual_suplemento'] : $aluno['suplemento'] : '' ?></td>                                      
+                <td><span class="text-destaque"> Objetivo:</span><br>  <?php echo!empty($aluno['objetivo']) ? $aluno['objetivo'] : '' ?></td>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <th colspan="2"><h4 class="text-destaque">Avaliação Física</h4></th>
             </tr>
             <?php
-            if (isset($cooperado['producao']) && !empty($cooperado['producao'])) {
-                $qtd = 1;
-                ?>
-                <tr>
-                    <th width="50px">#</th>
-                    <th> Produto</th>
-                    <th width="300px">Área em metro quadrado(m²)</th>
-                </tr>
-                <?php
-                foreach ($cooperado['producao'] as $index):
+            if (isset($aluno['avaliacao_fisica']) && !empty($aluno['avaliacao_fisica'])):
+                foreach ($aluno['avaliacao_fisica'] as $index):
                     ?>
                     <tr>
-                        <td class="linha"><?php echo $qtd ?></td>
-                        <td class="linha"><?php echo $index['producao'] . " - " . $index['categoria'] ?></td>
-                        <td class="linha"><?php echo!empty($index['area']) ? $index['area'] . ' m²' : '' ?></td>
-                    </tr>
-                    <?php
-                    $qtd++;
-                endforeach;
-            } else {
-                echo '<tr><td colspan="1">Desculpe, não foi possível localizar nenhum registro.</td></tr>';
-            }
-            ?>
+                        <td colspan="2">
+                            <table class="table table-sub">
+                                <tr>
+                                    <th colspan="4"><h4 class="text-destaque">Avaliação Física - <?php echo!empty($index['data']) ? $this->formatDateView($index['data']) : '' ?></h4></th>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-destaque">Peso:</span> <br> <?php echo!empty($index['peso']) ? $this->removeZeroEsquerda($index['peso']) : '' ?></td>
+                                    <td><span class="text-destaque">Abdômen:</span><br>  <?php echo!empty($index['abdomen']) ? $this->removeZeroEsquerda($index['abdomen']) : '' ?></td>
+                                    <td><span class="text-destaque">Quadril:</span><br>  <?php echo!empty($index['quadril']) ? $this->removeZeroEsquerda($index['quadril']) : '' ?></td>
+                                    <td><span class="text-destaque">Cintura:</span> <br> <?php echo!empty($index['cintura']) ? $this->removeZeroEsquerda($index['cintura']) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-destaque">Braço direito:</span> <br> <?php echo!empty($index['braco_direito']) ? $this->removeZeroEsquerda($index['braco_direito']) : '' ?></td>
+                                    <td><span class="text-destaque">Braço esquerdo:</span> <br> <?php echo!empty($index['braco_esquerdo']) ? $this->removeZeroEsquerda($index['braco_esquerdo']) : '' ?></td>
+                                    <td><span class="text-destaque">Antebraço direito:</span> <br> <?php echo!empty($index['antebraco_direito']) ? $this->removeZeroEsquerda($index['antebraco_direito']) : '' ?></td>
+                                    <td><span class="text-destaque">Antebraço esquerdo:</span> <br> <?php echo!empty($index['antebraco_esquerdo']) ? $this->removeZeroEsquerda($index['antebraco_esquerdo']) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-destaque">Coxa direita:</span> <br> <?php echo!empty($index['coxa_direita']) ? $this->removeZeroEsquerda($index['coxa_direita']) : '' ?></td>
+                                    <td><span class="text-destaque">Coxa esqueda:</span> <br> <?php echo!empty($index['coxa_esqueda']) ? $this->removeZeroEsquerda($index['coxa_esqueda']) : '' ?></td>      
+                                    <td><span class="text-destaque">Panturrilha direita:</span> <br> <?php echo!empty($index['panturrilha_direita']) ? $this->removeZeroEsquerda($index['panturrilha_direita']) : '' ?></td>      
+                                    <td><span class="text-destaque">Panturrilha esquerda:</span> <br> <?php echo!empty($index['panturrilha_esquerda']) ? $this->removeZeroEsquerda($index['panturrilha_esquerda']) : '' ?></td>      
 
-        </table>
-
-        <table class="table table2">
-            <tr>
-                <th colspan="13"> <h4 class="text-destaque"> Relatório de Mensalidade</h4></th>
-            </tr>
-            <?php
-            if (isset($cooperado['mensalidades']) && !empty($cooperado['mensalidades'])) {
-                $qtd = 1;
-                ?>
-                <tr>
-                    <th class="font-small">Ano</th>
-                    <th class="font-small">Janeiro</th>
-                    <th class="font-small">Fevereiro</th>
-                    <th class="font-small">Março</th>
-                    <th class="font-small">Abril</th>
-                    <th class="font-small">Maio</th>
-                    <th class="font-small">Junho</th>
-                    <th class="font-small">Julho</th>
-                    <th class="font-small">Agosto</th>
-                    <th class="font-small">Setembro</th>
-                    <th class="font-small">Outubro</th>
-                    <th class="font-small">Novembro</th>
-                    <th class="font-small">Dezembro</th>
-                </tr>
-                <?php
-                foreach ($cooperado['mensalidades'] as $mensalidade):
-                    ?>
-                    <tr>
-                        <td class="font-small"><?php echo!empty($mensalidade['ano']) ? $mensalidade['ano'] : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['janeiro']) ? $this->formatDinheiroView($mensalidade['janeiro']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['fevereiro']) ? $this->formatDinheiroView($mensalidade['fevereiro']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['marco']) ? $this->formatDinheiroView($mensalidade['marco']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['abril']) ? $this->formatDinheiroView($mensalidade['abril']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['maio']) ? $this->formatDinheiroView($mensalidade['maio']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['junho']) ? $this->formatDinheiroView($mensalidade['junho']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['julho']) ? $this->formatDinheiroView($mensalidade['julho']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['agosto']) ? $this->formatDinheiroView($mensalidade['agosto']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['setembro']) ? $this->formatDinheiroView($mensalidade['setembro']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['outubro']) ? $this->formatDinheiroView($mensalidade['outubro']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['novembro']) ? $this->formatDinheiroView($mensalidade['novembro']) : '' ?></td>
-                        <td class="font-small"><?php echo!empty($mensalidade['dezembro']) ? $this->formatDinheiroView($mensalidade['dezembro']) : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-destaque">IMC:</span> <br> <?php echo!empty($index['imc']) ? $index['imc'] : '' ?></td>
+                                    <td><span class="text-destaque">Déficit calórico:</span> <br> <?php echo!empty($index['deficit_calorico']) ? $index['deficit_calorico'] . " Kcal" : '' ?></td>
+                                    <td colspan="2"><span class="text-destaque">Taxa de metabolismo basal (TMB):</span> <br>  <?php echo!empty($index['tmb']) ? $index['tmb'] . " Kcal" : '' ?></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-destaque">Massa residual: </span> <br> <?php echo!empty($index['massa_residual']) ? $index['massa_residual'] . " kg" : '' ?></td>
+                                    <td><span class="text-destaque">Massa óssea:</span> <br> <?php echo!empty($index['massa_ossea']) ? $index['massa_ossea'] . " kg" : '' ?></td>
+                                    <td><span class="text-destaque">Massa muscular:</span><br>  <?php echo!empty($index['massa_muscular']) ? $index['massa_muscular'] . " kg" : '' ?></td>
+                                    <td><span class="text-destaque">Massa gorda:</span> <br> <?php echo!empty($index['massa_gorda']) ? $index['massa_gorda'] . " kg" : '' ?></td>
+                                </tr>
+                            </table>
+                        </td>
                     </tr>
                     <?php
                 endforeach;
-            } else {
-                echo '<tr><td colspan="13">Desculpe, não foi possível localizar nenhum registro.</td></tr>';
-            }
+            endif;
             ?>
-
-        </table>
-
-        <table class="table">
-            <tr>
-                <th colspan="3"><h4 class="text-destaque"> Relatório de Histórico</h4></th>
-            </tr>
-
-            <?php
-            if (isset($cooperado['historicos']) && !empty($cooperado['historicos'])) {
-                $qtd = 1;
-                ?>
-                <tr>
-                    <th width="50px">#</th>
-                    <th width="200px">Data</th>
-                    <th>Descrição / Atendimento</th>
-                </tr>
-                <?php
-                $qtd = 1;
-                foreach ($cooperado['historicos'] as $historico):
-                    ?>
-                    <tr>
-                        <td class="linha"><?php echo $qtd ?></td>
-                        <td class="linha"><?php echo $this->formatDateViewComplet($historico['data_historico']) ?></td>
-                        <td class="linha"><?php echo $historico['descricao_historico'] ?></td>
-                    </tr>
-                    <?php
-                    ++$qtd;
-                endforeach;
-            } else {
-                echo '<tr><td colspan="3">Desculpe, não foi possível localizar nenhum registro.</td></tr>';
-            }
-            ?>
-
         </table>
         <table>
             <tr>
-                <td align="right">Este documento foi gerado em <?php echo $this->formatDateView(date("Y-m-d")) . ' as ' . date("H:i:s", (time() - 10800)) ?>.</td>
+                <td align="right">Este documento foi gerado em <?php echo $this->formatDateView(date("Y-m-d")) . ' as ' . date("H:i:s", (time() - $this->ajustaHorario())) ?>.</td>
             </tr>
         </table>
     </body>

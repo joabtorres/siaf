@@ -52,18 +52,23 @@
         font-size: 9px;
     }
     .table, th, .linha{
-        border: 1px solid black;    
+        border: 1px solid #09863e;    
         border-collapse: collapse;
     }
     table td.font-small {
-        border: 1px solid black;    
+        border: 1px solid #09863e;    
         border-collapse: collapse;  
     }
     th, td {
         padding: 5px;text-align: left;
     }
     table.table th {
-        background-color: #ccc;
+        background-color: #09863e;
+        color: white
+    }
+    
+    table.table-sub th {
+        background-color: #00a65a;
     }
 
 }

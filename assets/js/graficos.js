@@ -1,5 +1,4 @@
 graficoAlunoObjetivo();
-graficoFinanceiro();
 graficoAssociadoStatus();
 function graficoAlunoObjetivo() {
     xhttp = new XMLHttpRequest();
@@ -23,19 +22,6 @@ function graficoAssociadoStatus() {
         }
     };
     xhttp.open("GET", base_url + "/grafico/aluno_genero", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send();
-}
-
-function graficoFinanceiro() {
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            array = JSON.parse(this.responseText);
-            geraGraficoBarraVertical(array, 'grafico_protocolo_objetivo', 'Gráfico Finánceiro Anual');
-        }
-    };
-    xhttp.open("GET", base_url + "/grafico/grafico_financeiro", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send();
 }
@@ -86,55 +72,6 @@ function geraGraficoPizza(array, id_grafico) {
         options: option
     });
 }
-
-/**
- * geraGraficoBarraVertical função encarregada para gerar gráfico em barra vertical
- * @param {array} array -- array contendo os labels e valores
- * @param {string} id_grafico id do grafico
- * @returns {undefined}
- */
-
-
-function geraGraficoBarraVertical(array, id_grafico, legenda) {
-    var dataset = [];
-    for (var i = 0; i < array.length; i++) {
-        dataset[i] = {
-            label: array[i]['label'],
-            backgroundColor: cor(i),
-            borderWidth: 1,
-            data: [
-                array[i]['data'], 0
-            ]
-        };
-    }
-    var horizontalBarChartData = {
-        labels: [],
-        datasets: dataset
-    };
-    var option = {
-        elements: {
-            rectangle: {
-                borderWidth: 1
-            }
-        },
-        responsive: true,
-        legend: {
-            display: true,
-            position: 'bottom'
-        },
-        title: {
-            display: true,
-            text: legenda
-        }
-    };
-    var ctx = document.getElementById(id_grafico).getContext('2d');
-    window.myHorizontalBar = new Chart(ctx, {
-        type: 'horizontalBar',
-        data: horizontalBarChartData,
-        options: option
-    });
-}
-
 function cor(num) {
     var cores = ['#00a65a', '#dd4b39', '#e89e29', '#6c5ae2', '#543324', '#ed6636', , '#121833', '#0c799a', '#d9b557', '#1888b8'];
     return cores[num];

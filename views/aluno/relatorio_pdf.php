@@ -21,7 +21,7 @@
         <table style="width:100%; ">	    
             <tr>
                 <td align="left">
-                    <img src="<?php echo BASE_URL . '/assets/imagens/logo-aparaa.png'; ?>" alt="Logo" style="width: 80px;"/>
+                    <img src="<?php echo BASE_URL . '/assets/imagens/ifpa.png'; ?>" alt="Logo" style="width: 120px;"/>
 
                 </td>
                 <td align="left">
@@ -35,13 +35,13 @@
                     </p>
                 </td>
                 <td align="right">
-                    <img src="<?php echo BASE_URL . '/assets/imagens/ifpa_sigapa.png'; ?>" alt="Logo" style="width: 140px;"/>
+                    <img src="<?php echo BASE_URL . '/assets/imagens/logo.png'; ?>" alt="Logo" style="width: 140px;"/>
                 </td>
             </tr>
             <tr>
                 <td align="center" colspan="3">
                     <p><?php echo NAME_PROJECT ?></p><br/>
-                    <h4>Relatório de Associados</h2>
+                    <h4>Relatório de Alunos</h2>
                 </td>
             </tr>
         </table>
@@ -50,14 +50,26 @@
             <div id="section">                
                 <table class="table">
                     <tr>
-                        <th>Categoria</th>
-                        <th>Status</th>
-                        <th>Por</th>
-                        <th>Busca</th>
+                        <th>Curso</th>
+                        <th>Turma</th>
+                        <th>Genero</th>
+                        <th>Cor</th>
                     </tr>
                     <tr>
-                        <td><?php echo $busca['tipo'] ?></td>
-                        <td><?php echo $busca['status'] ?></td>
+                        <td><?php echo $busca['curso'] ?></td>
+                        <td><?php echo $busca['turma'] ?></td>
+                        <td><?php echo $busca['genero'] ?></td>
+                        <td><?php echo $busca['cor'] ?></td>
+                    </tr>
+                    <tr>
+                        <th>Intensidade de Atividade Física:</th>
+                        <th>Objetivo</th>
+                        <th>Por</th>
+                        <th>Buscar</th>
+                    </tr>
+                    <tr>
+                        <td><?php echo $busca['intensidade_fisica'] ?></td>
+                        <td><?php echo $busca['objetivo'] ?></td>
                         <td><?php echo $busca['por'] ?></td>
                         <td><?php echo $busca['campo'] ?></td>
                     </tr>
@@ -65,27 +77,27 @@
                 <hr>
 
 
-                <?php if (!empty($cooperados)) : ?>
-                    <h3 class="text-right">Total: <?php echo count($cooperados) > 1 ? count($cooperados) . ' registros encontrados' : count($cooperados) . ' registro encontrado' ?>.</h3>
+                <?php if (!empty($alunos)) : ?>
+                    <h3 class="text-right">Total: <?php echo count($alunos) > 1 ? count($alunos) . ' registros encontrados' : count($alunos) . ' registro encontrado' ?>.</h3>
                     <table class="table">
                         <tr>
                             <th>#</th>
-                            <th>Apelido</th>
-                            <th>Nome Completo</th>
-                            <th>Nº de Matricula</th>
-                            <th>Inscrição</th>
+                            <th>Nome</th>
+                            <th>Idade</th>
+                            <th>Turma</th>
+                            <th>Objetivo</th>
                         </tr>
 
                         <?php
                         $qtd = 1;
-                        foreach ($cooperados as $cooperado) :
+                        foreach ($alunos as $aluno) :
                             ?>
                             <tr>
-                                <td class="text-center"><?php echo $qtd; ?></td>
-                                <td class="text-upercase"><?php echo!empty($cooperado['apelido']) ? $cooperado['apelido'] : '' ?></td>
-                                <td class="text-upercase"><?php echo!empty($cooperado['nome_completo']) ? $cooperado['nome_completo'] : '' ?></td>
-                                <td class="text-upercase"><?php echo!empty($cooperado['cod']) ? str_pad($cooperado['cod'], 3, '0', STR_PAD_LEFT) : '' ?></td>
-                                <td class="text-upercase"><?php echo!empty($cooperado['data_inscricao']) ? $this->formatDateView($cooperado['data_inscricao']) : '' ?></td>
+                                <td width="40px"><?php echo $qtd; ?></td>
+                                <td><?php echo!empty($aluno['nome']) ? $aluno['nome'] : '' ?></td>
+                                <td><?php echo!empty($aluno['nascimento']) ? $this->calcularIdade($aluno['nascimento']) : '' ?></td>
+                                <td><?php echo!empty($aluno['turma']) ? $aluno['turma'] . ' - Curso: ' . $aluno['curso'] : '' ?></td>
+                                <td><?php echo!empty($aluno['objetivo']) ? $aluno['objetivo'] : '' ?></td>
                             </tr>
                             <?php
                             ++$qtd;

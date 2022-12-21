@@ -21,65 +21,94 @@
                         <article class="panel-body">
                             <div class="row">
                                 <div class="col-md-3 form-group">
-                                    <label for='iTipo'>Curso: </label>
-                                    <select id="iTipo" name="nTipo" class="form-control">
-                                        <option checked='checked' value="" >Todos</option>
-                                        <option value="Permissionário">Permissionário</option>
-                                        <option  value="Participativo">Participativo</option>
+                                    <label for="iStatus" class="control-label">Curso: </label><br/>
+                                    <select id="iStatus" name="nCurso" class="form-control">
+                                        <?php
+                                        echo '<option value="" selected="selected">Todos</option>';
+                                        $array = array('Técnico em Informática Integrado ao Ensino Médio', 'Técnico em Edificação Integrado ao Ensino Médio', 'Técnico em Agroecologia Integrado ao Ensino Médio');
+                                        for ($i = 0; $i < count($array); $i++) {
+                                            echo '<option value="' . $array[$i] . '">' . $array[$i] . '</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for='iTipo'>Turma: </label>
-                                    <select id="iTipo" name="nTipo" class="form-control">
-                                        <option checked='checked' value="" >Todos</option>
-                                        <option value="Permissionário">Permissionário</option>
-                                        <option  value="Participativo">Participativo</option>
+                                    <label for='iTurma'>Turma: </label>
+                                    <select id="iTurma" name="nTurma" class="form-control">
+                                        <?php
+                                        if (isset($turmas) && !empty($turmas)) {
+                                            echo '<option value="" selected="selected">Todas</option>';
+                                            foreach ($turmas as $index) {
+                                                echo '<option value="' . $index['cod'] . '">' . $index['turma']. '</option>';
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for='iTipo'>Genero: </label>
-                                    <select id="iTipo" name="nTipo" class="form-control">
-                                        <option checked='checked' value="" >Todos</option>
-                                        <option value="Permissionário">Permissionário</option>
-                                        <option  value="Participativo">Participativo</option>
+                                    <label for='igenero'>Gênero: </label>
+                                    <select id="igenero" name="nGenero" class="form-control">
+                                        <option selected='selected' value="" >Todos</option>
+                                        <?php
+                                        $generos = array(array('genero' => 'Masculino'), array('genero' => 'Feminino'));
+                                        foreach ($generos as $index) {
+                                            echo '<option value = "' . $index['genero'] . '">' . $index['genero'] . '</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for='iStatus'>Cor/raça: </label>
-                                    <select id="iStatus" name="nStatus" class="form-control">
-                                        <option checked='checked' value="" >Todos</option>
-                                        <option  value="Ativo">Ativo</option>
-                                        <option value="Inativo">Inativo</option>
+                                    <label for='iCor'>Cor/raça: </label>
+                                    <select id="iCor" name="nCor" class="form-control">
+                                        <option selected='selected' value="" >Todos</option>
+                                        <?php
+                                       $cores = array(array('cor' => 'Branco'), array('cor' => 'Pardo'), array('cor' => 'Preto'), array('cor' => 'Amarelo'), array('cor' => 'Indígena'));
+                                        foreach ($cores as $index) {
+                                            if (isset($formCad['cor']) && $index['cor'] == $formCad['cor']) {
+                                                echo '<option value = "' . $index['cor'] . '" selected = "selected">' . $index['cor'] . '</option>';
+                                            } else {
+                                                echo '<option value = "' . $index['cor'] . '">' . $index['cor'] . '</option>';
+                                            }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label for='iStatus'>Intensidade de Atividade Física: </label>
-                                    <select id="iStatus" name="nStatus" class="form-control">
-                                        <option checked='checked' value="" >Todos</option>
-                                        <option  value="Ativo">Ativo</option>
-                                        <option value="Inativo">Inativo</option>
-                                    </select>
+                                    <select id="iStatus" name="nIntensidadeFisica" class="form-control">
+                                        <option selected='selected' value="" >Todas</option>
+                                        <?php
+                                        $intensidade_atividade = array(array('atividade' => 'Inexistente'), array('atividade' => 'Leve'), array('atividade' => 'Moderada'), array('atividade' => 'Intensa'));
+                                        foreach ($intensidade_atividade as $index) {
+                                            echo '<option value = "' . $index['atividade'] . '" >' . $index['atividade'] . '</option>';
+                                        }
+                                        ?>
+                                    </select>  
                                 </div>
                                 <div class="col-md-3 form-group">
-                                    <label for='iStatus'>Objetivo: </label>
-                                    <select id="iStatus" name="nStatus" class="form-control">
-                                        <option checked='checked' value="" >Todos</option>
-                                        <option  value="Ativo">Ativo</option>
-                                        <option value="Inativo">Inativo</option>
+                                    <label for='objetivo'>Objetivo: </label>
+                                    <select id="objetivo" name="nObjetivo" class="form-control">
+                                        <option selected='selected' value="" >Todos</option>
+                                        <?php
+                                        $objetivo = array(array('objetivo' => 'Emagrecimento'), array('objetivo' => 'Ganhar Massa Muscular'), array('objetivo' => 'Condicionamento Físico'), array('objetivo' => 'Bem-estar e Socialização'));
+                                        foreach ($objetivo as $index) {
+                                            echo '<option value = "' . $index['objetivo'] . '">' . $index['objetivo'] . '</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label for='iPor'>Por: </label>
                                     <select id="iPor" name="nPor" class="form-control">
-                                        <option value="" checked='checked'>Todos</option>
+                                        <option value="" selected='selected'>Todos</option>
                                         <option value="Nome">Nome </option>
-                                        <option value="Idade">Idade</option>
                                         <option value="Fumante">Fumante</option>
                                         <option value="Alergico">Alergico </option>
                                         <option value="Lesão">Lesão </option>
                                         <option value="Medicamento Controlado">Medicamento Controlado </option>
                                         <option value="Número de refeições diárias">Número de refeições diárias </option>
-                                        <option value="Praticante de  atividades físicas semanais">Praticante de atividades físicas semanais </option>
+                                        <option value="Bebidas">Bebidas </option>
+                                        <option value="Praticante de atividades físicas semanais">Praticante de atividades físicas semanais </option>
                                     </select>
                                 </div>
                                 <div class="col-md-3 form-group">
@@ -183,17 +212,17 @@
                 ?>
                 <div class="col-md-4">
                     <div class=" thumbnail">
-                        <a href="<?php echo BASE_URL . '/cooperado/index/' . $aluno['cod'] ?>">
+                        <a href="<?php echo BASE_URL . '/aluno/index/' . $aluno['cod'] ?>">
                             <img src="<?php echo!empty($aluno['imagem']) ? BASE_URL . '/' . $aluno['imagem'] : BASE_URL . '/assets/imagens/foto_ilustrato3x4.png' ?>" alt="SGL - Usuáio" class="img-responsive img-rounded"/>
                         </a>
-                        <p class="text-center text-uppercase font-bold"><?php echo!empty($aluno['nome_completo']) ? $aluno['nome_completo'] : '' ?> <?php echo!empty($aluno['nz']) ? '- ' . $aluno['nz'] : '' ?></p>
-                        <p class="text-center text-capitalize">Categoria: <?php echo!empty($aluno['tipo']) ? $aluno['tipo'] : '' ?></p>
-                        <p class="text-center text-capitalize">Inscrição: <?php echo!empty($aluno['data_inscricao']) ? $this->formatDateView($aluno['data_inscricao']) : '' ?></p>
+                        <p class="text-center text-uppercase font-bold"><?php echo!empty($aluno['nome']) ? $aluno['nome'] : '' ?></p>
+                        <p class="text-center">Turma: <?php echo!empty($aluno['turma']) ? $aluno['turma'] : '' ?> - <?php echo!empty($aluno['curso']) ? $aluno['curso'] : '' ?></p>
+                        <p class="text-center">Idade: <?php echo!empty($aluno['nascimento']) ? $this->calcularIdade($aluno['nascimento']) : '' ?></p>
                         <div class="caption text-center">
                             <?php if ($this->checkUser() >= 2) { ?>
-                                <a href="<?php echo BASE_URL . '/editar/cooperado/' . $aluno['cod'] ?>" class="btn btn-primary btn-block btn-sm" title="Editar"><i class="fa fa-pencil-alt"></i> Editar</a> 
+                                <a href="<?php echo BASE_URL . '/editar/aluno/' . $aluno['cod'] ?>" class="btn btn-primary btn-block btn-sm" title="Editar"><i class="fa fa-pencil-alt"></i> Editar</a> 
                                 <?php if ($this->checkUser() >= 3) { ?>
-                                    <button type="button"  class="btn btn-danger btn-block btn-sm" data-toggle="modal" data-target="#modal_cooperado_<?php echo $aluno['cod']; ?>" title="Excluir"> <i class="fa fa-trash"></i> Excluir</button>
+                                    <button type="button"  class="btn btn-danger btn-block btn-sm" data-toggle="modal" data-target="#modal_aluno_<?php echo $aluno['cod']; ?>" title="Excluir"> <i class="fa fa-trash"></i> Excluir</button>
                                     <?php
                                 }
                             }

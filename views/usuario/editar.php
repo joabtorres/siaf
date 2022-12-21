@@ -76,7 +76,7 @@
                             }
                             ?>                                                               
                         </div>
-                        <?php if (isset($_SESSION['usuario_sig_cootax']['nivel']) && $_SESSION['usuario_sig_cootax']['nivel'] == 3 && $usuario['cod_usuario'] != $_SESSION['usuario_sig_cootax']['cod'] ) : ?>
+                        <?php if (isset($_SESSION['usuario_sessao']['nivel']) && $_SESSION['usuario_sessao']['nivel'] == 3 && $usuario['cod_usuario'] != $_SESSION['usuario_sessao']['cod']) : ?>
                             <div class="form-group">
                                 <span>Nível de Acesso:</span><br/>
                                 <?php
@@ -98,26 +98,11 @@
                             </div>
                             <?php
                         endif;
-                        if (isset($_SESSION['usuario_sig_cootax']['nivel']) && $usuario['cod_usuario'] != $_SESSION['usuario_sig_cootax']['cod'] && $_SESSION['usuario_sig_cootax']['nivel'] == 3) {
+                        if (isset($_SESSION['usuario_sessao']['nivel']) && $usuario['cod_usuario'] != $_SESSION['usuario_sessao']['cod'] && $_SESSION['usuario_sessao']['nivel'] == 3) {
                             ?>
                             <div class="form-group">
                                 <span>Status:</span><br/>
-                                <?php
-                                if (isset($usuario['status_usuario'])) {
-                                    $status = array(array('nome' => 'Ativo', 'valor' => '1'), array('nome' => 'Inativo', 'valor' => '0'));
-                                    foreach ($status as $statu) {
-                                        if ($usuario['status_usuario'] == $statu['valor']) {
-                                            echo ' <label><input type="radio" name="nStatuUsuario" value="' . $statu['valor'] . '" checked /> ' . $statu['nome'] . '</label> ';
-                                        } else {
-                                            echo ' <label><input type="radio" name="nStatuUsuario" value="' . $statu['valor'] . '" /> ' . $statu['nome'] . '</label> ';
-                                        }
-                                    }
-                                } else {
-                                    echo 111;
-                                    echo ' <label><input type="radio" name="nStatuUsuario" value="1"/> Ativa</label> ';
-                                    echo ' <label><input type="radio" name="nStatuUsuario" value="0" checked/> Inativo </label> ';
-                                }
-                                ?>                                  
+                                <label><input type="radio" name="tNivelDeAcesso" value="3" checked/> Adminstrador</label>                         
 
                             </div>
                             <?php

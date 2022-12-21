@@ -83,6 +83,8 @@ class cadastrarController extends controller {
                 $arrayCad['qual_alergia'] = isset($_POST['nQualAlergia']) ? $_POST['nQualAlergia'] : ''; //Alergia
                 $arrayCad['doenca'] = isset($_POST['nDoenca']) ? $_POST['nDoenca'] : ''; //nDoenca
                 $arrayCad['qual_doenca'] = isset($_POST['nQualDoenca']) ? $_POST['nQualDoenca'] : ''; //nDoenca
+                $arrayCad['doenca_na_familia'] = isset($_POST['nDoencaFamilia']) ? $_POST['nDoencaFamilia'] : ''; //nDoencaFamilia
+                $arrayCad['qual_doenca_na_familia'] = isset($_POST['nQualDoencaFamilia']) ? $_POST['nQualDoencaFamilia'] : ''; //nQualDoencaFamilia
                 $arrayCad['lesao'] = isset($_POST['nLesao']) ? $_POST['nLesao'] : ''; //nLesao
                 $arrayCad['qual_lesao'] = isset($_POST['nQualLesao']) ? $_POST['nQualLesao'] : ''; //lesao
                 $arrayCad['medicamento'] = isset($_POST['nMedicamento']) ? $_POST['nMedicamento'] : ''; //nMedicamento
